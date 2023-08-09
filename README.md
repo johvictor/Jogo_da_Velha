@@ -4,10 +4,10 @@ Este é um jogo simples de Jogo da Velha desenvolvido em Java.
 O jogo permite que dois jogadores alternem marcando células em um tabuleiro 3x3. O objetivo é conseguir uma linha, coluna ou diagonal completa com seus símbolos.
 
 ## Como Jogar
-1- Compile o código-fonte usando um compilador Java.
-2- Execute o programa Java para iniciar o jogo.
-3- Os jogadores alternam entre marcar as células com "X" e "O".
-4- O primeiro jogador a conseguir uma linha, coluna ou diagonal completa com seus símbolos vence o jogo.
+1. Compile o código-fonte usando um compilador Java.
+2. Execute o programa Java para iniciar o jogo.
+3. Os jogadores alternam entre marcar as células com "X" e "O".
+4. O primeiro jogador a conseguir uma linha, coluna ou diagonal completa com seus símbolos vence o jogo.
 
 ## Funcionalidades
 * O jogo permite que dois jogadores joguem alternadamente.
