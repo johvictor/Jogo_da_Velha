@@ -1,7 +1,6 @@
 
 package Velha;
 
-import java.util.Random;
 import java.util.Scanner;
 
 
@@ -18,7 +17,7 @@ public class Teste {
         
         DistribuirCampos(tabuleiro);
         int[]posicao= new int [2];
-       while(game){
+        while(game){
            
                 QualJogador(jogador);
                 Desenhar(tabuleiro);
@@ -27,12 +26,99 @@ public class Teste {
                 System.out.println("Coluna:");
                 posicao[1]=input.nextInt();
                 }while(!Marcar(tabuleiro, posicao, jogador));
-         
-            jogador=AlternarJogador(jogador); 
-                
+               if(VerificarVitoria(tabuleiro)){
+                   Desenhar(tabuleiro);
+                   System.out.println("\nJogador ("+jogador+") ganhou!!!\n\n");
+                   game=false;
+           
+            }else{
+                jogador=AlternarJogador(jogador); 
+            }    
         }
     }
     
+    public static boolean VerificarVitoria(Campo tabu [][]){
+        //LINHAS
+        if(tabu[0][0].isMarcado() && tabu[0][1].isMarcado() && tabu[0][2].isMarcado()){
+            char posicao[]= new char [3];
+            posicao[0]=tabu[0][0].getSimbolo();
+            posicao[1]=tabu[0][1].getSimbolo();
+            posicao[2]=tabu[0][2].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            } 
+        }
+        if(tabu[1][0].isMarcado() && tabu[1][1].isMarcado() && tabu[1][2].isMarcado()){
+           char posicao[]= new char [3];
+            posicao[0]=tabu[1][0].getSimbolo();
+            posicao[1]=tabu[1][1].getSimbolo();
+            posicao[2]=tabu[1][2].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }
+        if(tabu[2][0].isMarcado() && tabu[2][1].isMarcado() && tabu[2][2].isMarcado()){
+              char posicao[]= new char [3];
+            posicao[0]=tabu[2][0].getSimbolo();
+            posicao[1]=tabu[2][1].getSimbolo();
+            posicao[2]=tabu[2][2].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }  
+        //COLUNAS
+        if(tabu[0][0].isMarcado() && tabu[1][0].isMarcado() && tabu[2][0].isMarcado()){
+             char posicao[]= new char [3];
+            posicao[0]=tabu[0][0].getSimbolo();
+            posicao[1]=tabu[1][0].getSimbolo();
+            posicao[2]=tabu[2][0].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }    
+        if(tabu[0][1].isMarcado() && tabu[1][1].isMarcado() && tabu[2][1].isMarcado()){
+              char posicao[]= new char [3];
+            posicao[0]=tabu[0][1].getSimbolo();
+            posicao[1]=tabu[1][1].getSimbolo();
+            posicao[2]=tabu[2][1].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }
+        if(tabu[0][2].isMarcado() && tabu[1][2].isMarcado() && tabu[2][2].isMarcado()){
+                   char posicao[]= new char [3];
+                posicao[0]=tabu[0][2].getSimbolo();
+                posicao[1]=tabu[1][2].getSimbolo();
+                posicao[2]=tabu[2][2].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }
+        //
+        
+        if(tabu[0][0].isMarcado() && tabu[1][1].isMarcado() && tabu[2][2].isMarcado()){
+                char posicao[]= new char [3];
+            posicao[0]=tabu[0][0].getSimbolo();
+            posicao[1]=tabu[1][1].getSimbolo();
+            posicao[2]=tabu[2][2].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+        }    
+         if(tabu[0][2].isMarcado() && tabu[1][1].isMarcado() && tabu[2][0].isMarcado()){
+                char posicao[]= new char [3];
+            posicao[0]=tabu[0][2].getSimbolo();
+            posicao[1]=tabu[1][1].getSimbolo();
+            posicao[2]=tabu[2][0].getSimbolo();
+            if(posicao[0] == posicao[1] && posicao[1] == posicao[2]){
+                 return true;
+            }
+         }    
+        return false;
+    }
+
+  
+
     public static void QualJogador(char j){
         if(j=='X'){
             System.out.println("\nJOGADOR 1 ("+j+")\n");
