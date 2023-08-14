@@ -13,38 +13,42 @@ public class Teste {
         
         Campo [][] tabuleiro = new Campo [3][3];
         
+        char jogador ='X';
         boolean game = true;
         
         DistribuirCampos(tabuleiro);
         int[]posicao= new int [2];
        while(game){
-          
+           
+                QualJogador(jogador);
                 Desenhar(tabuleiro);
              do{System.out.println("Linha:");
                 posicao[0]=input.nextInt();
                 System.out.println("Coluna:");
                 posicao[1]=input.nextInt();
-                }while(!Marcar(tabuleiro, posicao));
-               JogadaInimiga(tabuleiro);
-                
+                }while(!Marcar(tabuleiro, posicao, jogador));
+         
+            jogador=AlternarJogador(jogador); 
                 
         }
     }
     
-    
-    public static void JogadaInimiga(Campo tabu[][]){
-        Random gerador = new Random ();
-        int i;
-        int j;
-       do{i= gerador.nextInt(3);
-          j= gerador.nextInt(3);
-        }while(!tabu[i][j].isMarcado());
-            tabu[i][j].setSimbolo('O');
-            tabu[i][j].setMarcado(true);
+    public static void QualJogador(char j){
+        if(j=='X'){
+            System.out.println("\nJOGADOR 1 ("+j+")\n");
+        }else{
+         System.out.println("\nJOGADOR 2 ("+j+")\n");
+        }
+    }
+ 
+    public static char AlternarJogador(char j){
+        if(j=='X'){
+            return 'O';
+        }
+        return 'X';
     }
     
-    
-    public static boolean Marcar(Campo tabu[][], int p[]){
+    public static boolean Marcar(Campo tabu[][], int p[], char j){
         int num1=p[0];
         int num2=p[1];
         if(num1>=3 || num2>=3){
@@ -52,7 +56,7 @@ public class Teste {
             return false;
         }
         if(!tabu[num1][num2].isMarcado()){
-            tabu[num1][num2].setSimbolo('X');
+            tabu[num1][num2].setSimbolo(j);
             tabu[num1][num2].setMarcado(true);
             return true;
         } 
